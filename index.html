@@ -1,0 +1,906 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Owl Toys | Playgrounds e soluções para espaços infantis</title>
+  <meta name="description" content="Playgrounds em eucalipto e aço, pisos emborrachados e brinquedos para escolas, clínicas, condomínios, órgãos públicos e famílias.">
+  <meta name="theme-color" content="#1F3A6E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ==========================================================
+       IDENTIDADE VISUAL — altere aqui somente se a marca mudar
+       ========================================================== */
+    :root {
+      --azul: #1D5FC2;
+      --marinho: #1F3A6E;
+      --laranja: #E87722; /* Uso exclusivo em ações e CTAs */
+      --madeira: #8A5A2B;
+      --madeira-escura: #60401f;
+      --branco: #ffffff;
+      --azul-neve: #f5f8fd;
+      --azul-claro: #eaf1fb;
+      --texto: #263854;
+      --texto-suave: #64728a;
+      --borda: #dce6f3;
+      --sombra: 0 18px 50px rgba(31, 58, 110, .12);
+      --raio: 24px;
+      --container: 1180px;
+      --header-h: 82px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 18px); }
+    body {
+      color: var(--texto);
+      background: var(--branco);
+      font-family: "Poppins", system-ui, sans-serif;
+      font-size: 1rem;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    body.menu-open { overflow: hidden; }
+    img { display: block; width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    button { border: 0; }
+    h1, h2, h3, .brand-word {
+      color: var(--marinho);
+      font-family: "Baloo 2", sans-serif;
+      line-height: 1.08;
+      letter-spacing: -.02em;
+    }
+    h1 { font-size: clamp(2.55rem, 5.4vw, 5.2rem); font-weight: 800; }
+    h2 { font-size: clamp(2rem, 3.8vw, 3.55rem); font-weight: 700; }
+    h3 { font-size: 1.42rem; font-weight: 700; }
+    p { text-wrap: pretty; }
+    section { position: relative; padding: 108px 0; }
+    .container { width: min(calc(100% - 40px), var(--container)); margin-inline: auto; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      color: var(--azul);
+      font-weight: 700;
+      font-size: .8rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 30px; height: 2px; background: currentColor; }
+    .section-head { max-width: 720px; margin-bottom: 50px; }
+    .section-head p { margin-top: 18px; color: var(--texto-suave); font-size: 1.05rem; }
+    .btn {
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 24px;
+      border-radius: 999px;
+      background: var(--laranja);
+      color: var(--branco);
+      font-weight: 700;
+      box-shadow: 0 10px 28px rgba(232, 119, 34, .28);
+      cursor: pointer;
+      transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 15px 34px rgba(232, 119, 34, .34); filter: brightness(1.03); }
+    .btn svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 2; }
+    .link-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--azul);
+      font-weight: 700;
+      transition: gap .2s ease;
+    }
+    .link-arrow:hover { gap: 12px; }
+    :focus-visible { outline: 3px solid var(--laranja); outline-offset: 4px; border-radius: 6px; }
+    .skip-link { position: fixed; z-index: 9999; top: 10px; left: 10px; transform: translateY(-160%); }
+    .skip-link:focus { transform: translateY(0); }
+
+    /* HEADER — edite os nomes dos links no HTML */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 1000;
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
+      background: rgba(255,255,255,.94);
+      border-bottom: 1px solid rgba(220,230,243,.75);
+      backdrop-filter: blur(16px);
+      transition: box-shadow .25s ease, height .25s ease;
+    }
+    .site-header.scrolled { box-shadow: 0 10px 30px rgba(31,58,110,.08); }
+    .nav-wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; min-width: 170px; }
+    .brand img { width: 48px; height: 48px; object-fit: contain; }
+    .brand-word { font-size: 1.75rem; font-weight: 800; }
+    .nav-menu { display: flex; align-items: center; gap: clamp(18px, 2.5vw, 34px); list-style: none; }
+    .nav-menu a:not(.btn) { position: relative; color: var(--marinho); font-size: .92rem; font-weight: 600; }
+    .nav-menu a:not(.btn)::after {
+      content: ""; position: absolute; left: 0; right: 100%; bottom: -8px; height: 2px;
+      background: var(--azul); transition: right .25s ease;
+    }
+    .nav-menu a:not(.btn):hover::after, .nav-menu a.active::after { right: 0; }
+    .nav-menu .btn { min-height: 44px; padding: 10px 18px; color: white; font-size: .88rem; }
+    .menu-toggle {
+      display: none; width: 46px; height: 46px; border-radius: 50%; background: var(--azul-claro);
+      color: var(--marinho); align-items: center; justify-content: center; cursor: pointer;
+    }
+    .menu-toggle span, .menu-toggle span::before, .menu-toggle span::after {
+      width: 21px; height: 2px; background: currentColor; position: relative; display: block; transition: .25s ease;
+    }
+    .menu-toggle span::before, .menu-toggle span::after { content: ""; position: absolute; left: 0; }
+    .menu-toggle span::before { top: -7px; }
+    .menu-toggle span::after { top: 7px; }
+    .menu-open .menu-toggle span { background: transparent; }
+    .menu-open .menu-toggle span::before { top: 0; transform: rotate(45deg); }
+    .menu-open .menu-toggle span::after { top: 0; transform: rotate(-45deg); }
+
+    /* HERO — troque a imagem em assets/fachada-owl-toys.webp */
+    .hero {
+      min-height: min(900px, 100svh);
+      display: flex;
+      align-items: center;
+      padding: calc(var(--header-h) + 70px) 0 82px;
+      color: var(--branco);
+      background:
+        linear-gradient(90deg, rgba(23,45,87,.96) 0%, rgba(31,58,110,.88) 46%, rgba(31,58,110,.28) 78%),
+        linear-gradient(0deg, rgba(31,58,110,.35), rgba(31,58,110,.08)),
+        url("assets/fachada-owl-toys.webp") center/cover no-repeat;
+    }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 700px) 1fr; align-items: center; }
+    .hero h1 { color: var(--branco); }
+    .hero .eyebrow { color: #dfeaff; }
+    .hero-copy > p { max-width: 630px; margin: 24px 0 32px; font-size: clamp(1.04rem, 1.6vw, 1.22rem); color: #e8eef8; }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 20px; }
+    .hero-secondary { color: var(--branco); font-weight: 600; display: inline-flex; gap: 8px; align-items: center; }
+    .hero-secondary span { width: 32px; height: 32px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.42); border-radius: 50%; }
+    .hero-facts { margin-top: 44px; display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero-fact { padding: 8px 13px; border: 1px solid rgba(255,255,255,.22); border-radius: 999px; background: rgba(255,255,255,.08); font-size: .82rem; font-weight: 600; backdrop-filter: blur(10px); }
+
+    /* FAIXA DE CONFIANÇA */
+    .trust { padding: 0; background: var(--branco); }
+    .trust-grid {
+      transform: translateY(-34px);
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--borda); border-radius: var(--raio);
+      background: var(--branco); box-shadow: var(--sombra); overflow: hidden;
+    }
+    .trust-item { min-height: 124px; padding: 24px; display: flex; align-items: center; gap: 16px; }
+    .trust-item + .trust-item { border-left: 1px solid var(--borda); }
+    .trust-icon, .card-icon, .diff-icon {
+      flex: 0 0 auto; display: grid; place-items: center; border-radius: 16px; background: var(--azul-claro); color: var(--azul);
+    }
+    .trust-icon { width: 48px; height: 48px; }
+    .trust-icon svg, .card-icon svg, .diff-icon svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .trust-item strong { display: block; color: var(--marinho); font-family: "Baloo 2"; font-size: 1.23rem; line-height: 1.2; }
+    .trust-item small { display: block; margin-top: 4px; color: var(--texto-suave); font-size: .76rem; line-height: 1.45; }
+
+    /* SOBRE */
+    .about { padding-top: 75px; }
+    .about-grid { display: grid; grid-template-columns: .95fr 1.05fr; gap: clamp(48px, 7vw, 90px); align-items: center; }
+    .about-media { position: relative; min-height: 560px; }
+    .about-photo { position: absolute; inset: 0 90px 40px 0; border-radius: 34px; object-fit: cover; height: calc(100% - 40px); box-shadow: var(--sombra); }
+    .wood-card {
+      position: absolute; right: 0; bottom: 0; width: 255px; padding: 28px; color: var(--branco); border-radius: 24px;
+      background:
+        repeating-linear-gradient(4deg, rgba(255,255,255,.04) 0 1px, transparent 1px 13px),
+        linear-gradient(135deg, var(--madeira), var(--madeira-escura));
+      box-shadow: 0 18px 40px rgba(69,43,20,.24);
+    }
+    .wood-card strong { color: white; font-family: "Baloo 2"; font-size: 2rem; line-height: 1; display: block; }
+    .wood-card span { margin-top: 8px; display: block; font-size: .88rem; line-height: 1.5; }
+    .about-copy p { margin-top: 18px; color: var(--texto-suave); }
+    .check-list { margin: 30px 0 34px; display: grid; gap: 14px; list-style: none; }
+    .check-list li { display: flex; gap: 12px; align-items: flex-start; }
+    .check-list i { margin-top: 4px; width: 22px; height: 22px; display: grid; place-items: center; border-radius: 50%; background: var(--azul); color: white; font-style: normal; font-size: .72rem; }
+
+    /* FÁBRICA — fotos reais da produção e preparação das estruturas */
+    .factory {
+      color: white;
+      background:
+        linear-gradient(100deg, rgba(29,95,194,.12), transparent 42%),
+        var(--marinho);
+    }
+    .factory .eyebrow, .factory h2 { color: white; }
+    .factory .section-head p { color: #dfe8f6; }
+    .factory-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .factory-card {
+      position: relative; min-height: 440px; border-radius: 24px; overflow: hidden;
+      background: #132c58; box-shadow: 0 18px 42px rgba(9,27,59,.3);
+    }
+    .factory-card img { height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
+    .factory-card:hover img { transform: scale(1.035); }
+    .factory-card::after {
+      content: ""; position: absolute; inset: 28% 0 0;
+      background: linear-gradient(transparent, rgba(12,29,60,.94));
+    }
+    .factory-caption { position: absolute; z-index: 2; left: 26px; right: 26px; bottom: 25px; }
+    .factory-step {
+      display: inline-flex; align-items: center; gap: 8px; margin-bottom: 8px;
+      color: #c7d9f3; font-size: .73rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+    }
+    .factory-step::before { content: ""; width: 22px; height: 2px; background: currentColor; }
+    .factory-caption strong { display: block; color: white; font-family: "Baloo 2"; font-size: 1.45rem; line-height: 1.1; }
+    .factory-caption p { margin-top: 7px; color: #dfe8f6; font-size: .82rem; line-height: 1.55; }
+
+    /* PRODUTOS */
+    .products { background: var(--azul-neve); }
+    .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .product-card {
+      min-height: 410px; padding: 34px; display: flex; flex-direction: column;
+      border: 1px solid var(--borda); border-radius: var(--raio); background: var(--branco);
+      box-shadow: 0 12px 30px rgba(31,58,110,.06);
+      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    }
+    .product-card:hover { transform: translateY(-7px); box-shadow: var(--sombra); border-color: #b7cbea; }
+    .product-card.featured { background: var(--marinho); border-color: var(--marinho); }
+    .product-card.featured h3, .product-card.featured p, .product-card.featured li, .product-card.featured .link-arrow { color: white; }
+    .product-card.featured .card-icon { background: rgba(255,255,255,.12); color: white; }
+    .card-icon { width: 58px; height: 58px; margin-bottom: 28px; }
+    .card-icon svg { width: 28px; height: 28px; }
+    .product-card p { margin-top: 13px; color: var(--texto-suave); font-size: .94rem; }
+    .mini-list { margin: 22px 0 26px; display: grid; gap: 9px; list-style: none; color: var(--texto); font-size: .87rem; }
+    .mini-list li::before { content: "—"; margin-right: 8px; color: var(--azul); }
+    .product-card.featured .mini-list li::before { color: #a9c7f1; }
+    .product-card .link-arrow { margin-top: auto; }
+
+    /* SEGMENTOS */
+    .segments-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+    .segment-card {
+      position: relative; padding: 32px 34px 32px 84px; border: 1px solid var(--borda);
+      border-radius: 20px; background: var(--branco); overflow: hidden;
+    }
+    .segment-number {
+      position: absolute; left: 28px; top: 27px; color: var(--azul); font-family: "Baloo 2"; font-size: 1.75rem; font-weight: 800; opacity: .55;
+    }
+    .segment-card p { margin-top: 9px; color: var(--texto-suave); font-size: .93rem; }
+    .segment-tag { display: inline-block; margin-top: 17px; padding: 5px 10px; border-radius: 999px; color: var(--azul); background: var(--azul-claro); font-size: .75rem; font-weight: 700; }
+    .segment-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
+
+    /* DIFERENCIAIS COM TEXTURA DE MADEIRA */
+    .differentials {
+      color: white;
+      background:
+        repeating-linear-gradient(2deg, rgba(255,255,255,.035) 0 1px, transparent 1px 16px),
+        linear-gradient(115deg, var(--madeira-escura), var(--madeira) 58%, #74491f);
+    }
+    .differentials .eyebrow, .differentials h2 { color: white; }
+    .differentials .section-head p { color: #f0e4d9; }
+    .diff-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .diff-card { padding: 26px; border: 1px solid rgba(255,255,255,.2); border-radius: 20px; background: rgba(255,255,255,.08); backdrop-filter: blur(5px); }
+    .diff-icon { width: 50px; height: 50px; margin-bottom: 22px; color: white; background: rgba(255,255,255,.13); }
+    .diff-card h3 { color: white; font-size: 1.2rem; }
+    .diff-card p { margin-top: 8px; color: #f2e8de; font-size: .86rem; }
+
+    /* PROCESSO */
+    .process { background: var(--azul-neve); }
+    .process-line { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .process-line::before { content: ""; position: absolute; top: 29px; left: 8%; right: 8%; height: 2px; background: #bfd1eb; }
+    .process-step { position: relative; z-index: 1; }
+    .step-number {
+      width: 60px; height: 60px; display: grid; place-items: center; margin-bottom: 24px;
+      border: 7px solid var(--azul-neve); border-radius: 50%; background: var(--azul); color: white;
+      font-family: "Baloo 2"; font-size: 1.25rem; font-weight: 800; box-shadow: 0 0 0 1px #bfd1eb;
+    }
+    .process-step p { margin-top: 10px; color: var(--texto-suave); font-size: .87rem; }
+
+    /* PROJETOS / ESTRUTURA */
+    .projects-grid { display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-rows: 330px; gap: 18px; }
+    .project-card { position: relative; border-radius: 22px; overflow: hidden; background: var(--marinho); }
+    .project-card:nth-child(1), .project-card:nth-child(2) { grid-column: span 6; }
+    .project-card:nth-child(3), .project-card:nth-child(4), .project-card:nth-child(5) { grid-column: span 4; }
+    .project-card:nth-child(6) { grid-column: span 12; min-height: 280px; }
+    .project-card img { height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
+    .project-card:hover img { transform: scale(1.035); }
+    .project-card::after { content: ""; position: absolute; inset: 35% 0 0; background: linear-gradient(transparent, rgba(15,32,64,.92)); }
+    .project-caption { position: absolute; z-index: 2; left: 24px; right: 24px; bottom: 22px; color: white; }
+    .project-caption strong { display: block; font-family: "Baloo 2"; font-size: 1.35rem; line-height: 1.1; }
+    .project-caption span { display: block; margin-top: 5px; font-size: .78rem; color: #dfe8f6; }
+
+    /* VITRINE DE BRINQUEDOS — institucional, sem preços e sem carrinho */
+    .toys-showcase { background: var(--azul-neve); }
+    .toys-head {
+      display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 44px;
+    }
+    .toys-head .section-head { margin-bottom: 0; }
+    .toys-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .toy-card {
+      min-width: 0; overflow: hidden; border: 1px solid var(--borda); border-radius: 20px;
+      background: white; box-shadow: 0 10px 26px rgba(31,58,110,.06);
+      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    }
+    .toy-card:hover { transform: translateY(-6px); border-color: #b8cbea; box-shadow: var(--sombra); }
+    .toy-photo {
+      aspect-ratio: 1 / 1; padding: 12px; display: grid; place-items: center;
+      background: linear-gradient(145deg, #fff, #f0f5fb);
+    }
+    .toy-photo img { width: 100%; height: 100%; object-fit: contain; transition: transform .45s ease; }
+    .toy-photo.cover { padding: 0; }
+    .toy-photo.cover img { object-fit: cover; }
+    .toy-card:hover .toy-photo img { transform: scale(1.035); }
+    .toy-info { padding: 20px; }
+    .toy-category {
+      display: inline-block; margin-bottom: 8px; color: var(--azul); font-size: .7rem;
+      font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+    }
+    .toy-info h3 { font-size: 1.18rem; }
+    .toy-info p { margin-top: 7px; color: var(--texto-suave); font-size: .79rem; line-height: 1.55; }
+    .catalog-action { margin-top: 36px; display: flex; justify-content: center; }
+
+    /* INSTAGRAM — edite o usuário e o link diretamente no HTML */
+    .instagram-wrap { padding: 0 0 108px; background: var(--azul-neve); }
+    .instagram-card {
+      position: relative; overflow: hidden; padding: clamp(32px, 5vw, 54px);
+      display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 26px;
+      border-radius: 28px; color: white; background:
+        radial-gradient(circle at 84% 15%, rgba(255,255,255,.13), transparent 25%),
+        linear-gradient(120deg, var(--azul), var(--marinho));
+      box-shadow: 0 20px 50px rgba(31,58,110,.2);
+    }
+    .instagram-icon {
+      width: 74px; height: 74px; display: grid; place-items: center;
+      border: 1px solid rgba(255,255,255,.3); border-radius: 22px; background: rgba(255,255,255,.1);
+    }
+    .instagram-icon svg { width: 38px; height: 38px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+    .instagram-copy small { display: block; margin-bottom: 3px; color: #d9e7fa; font-weight: 600; }
+    .instagram-copy strong { display: block; color: white; font-family: "Baloo 2"; font-size: clamp(1.8rem, 3vw, 2.7rem); line-height: 1.08; }
+    .instagram-copy p { margin-top: 6px; color: #e4edf9; font-size: .88rem; }
+
+    /* CHAMADA */
+    .cta-band { padding: 0 0 108px; background: white; }
+    .cta-box {
+      padding: clamp(36px, 6vw, 64px); display: grid; grid-template-columns: 1fr auto; gap: 38px; align-items: center;
+      border-radius: 28px; background: var(--marinho); color: white; overflow: hidden;
+    }
+    .cta-box h2 { color: white; font-size: clamp(2rem, 3.3vw, 3.15rem); }
+    .cta-box p { max-width: 700px; margin-top: 12px; color: #dfe8f6; }
+
+    /* CONTATO — edite telefone, e-mail e endereço abaixo no HTML */
+    .contact { background: var(--azul-neve); }
+    .contact-grid { display: grid; grid-template-columns: .78fr 1.22fr; gap: clamp(50px, 7vw, 90px); align-items: start; }
+    .contact-copy > p { margin-top: 18px; color: var(--texto-suave); }
+    .contact-list { margin-top: 34px; display: grid; gap: 18px; list-style: none; }
+    .contact-list li { display: flex; gap: 14px; align-items: flex-start; }
+    .contact-list .trust-icon { width: 44px; height: 44px; border-radius: 14px; }
+    .contact-list b { display: block; color: var(--marinho); font-size: .9rem; }
+    .contact-list span, .contact-list a { color: var(--texto-suave); font-size: .88rem; }
+    .form-card { padding: clamp(28px, 4vw, 42px); border: 1px solid var(--borda); border-radius: var(--raio); background: white; box-shadow: var(--sombra); }
+    .form-card h3 { margin-bottom: 26px; font-size: 1.65rem; }
+    .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .field { display: grid; gap: 7px; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { color: var(--marinho); font-size: .82rem; font-weight: 700; }
+    .field input, .field select, .field textarea {
+      width: 100%; min-height: 51px; padding: 12px 14px; border: 1px solid #cbd9eb; border-radius: 12px;
+      background: white; color: var(--texto); transition: border-color .2s ease, box-shadow .2s ease;
+    }
+    .field textarea { min-height: 130px; resize: vertical; }
+    .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--azul); box-shadow: 0 0 0 3px rgba(29,95,194,.12); }
+    .consent { grid-column: 1 / -1; display: flex; align-items: flex-start; gap: 10px; color: var(--texto-suave); font-size: .77rem; }
+    .consent input { margin-top: 5px; accent-color: var(--azul); }
+    .form-card .btn { margin-top: 4px; width: fit-content; }
+
+    /* RODAPÉ */
+    footer { padding: 58px 0 24px; background: #172f5b; color: #d9e3f1; }
+    .footer-grid { display: grid; grid-template-columns: 1.3fr .7fr .9fr; gap: 60px; padding-bottom: 42px; }
+    footer .brand-word { color: white; }
+    .footer-brand p { max-width: 410px; margin-top: 16px; color: #b9c6d9; font-size: .86rem; }
+    .footer-title { margin-bottom: 16px; color: white; font-weight: 700; font-size: .86rem; text-transform: uppercase; letter-spacing: .08em; }
+    .footer-links { display: grid; gap: 9px; list-style: none; font-size: .85rem; }
+    .footer-links a { color: #c7d3e3; }
+    .footer-links a:hover { color: white; }
+    .footer-instagram { display: inline-flex; align-items: center; gap: 8px; }
+    .footer-instagram svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.9; }
+    .footer-bottom { padding-top: 22px; display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid rgba(255,255,255,.12); color: #9fb0c8; font-size: .75rem; }
+
+    /* BOTÃO FLUTUANTE WHATSAPP — edite o número no link */
+    .whatsapp-float {
+      position: fixed; z-index: 900; right: 22px; bottom: 22px; width: 58px; height: 58px;
+      display: grid; place-items: center; border-radius: 50%; background: var(--laranja); color: white;
+      box-shadow: 0 12px 30px rgba(232,119,34,.4); transition: transform .25s ease;
+    }
+    .whatsapp-float:hover { transform: translateY(-4px) scale(1.03); }
+    .whatsapp-float svg { width: 29px; height: 29px; fill: currentColor; }
+    .whatsapp-float::before {
+      content: "Fale conosco"; position: absolute; right: 68px; white-space: nowrap; padding: 7px 10px;
+      border-radius: 8px; background: var(--marinho); color: white; font-size: .72rem; font-weight: 600;
+      opacity: 0; transform: translateX(8px); transition: .2s ease; pointer-events: none;
+    }
+    .whatsapp-float:hover::before { opacity: 1; transform: translateX(0); }
+
+    /* ANIMAÇÕES */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: .08s; } .delay-2 { transition-delay: .16s; } .delay-3 { transition-delay: .24s; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+
+    /* TABLET */
+    @media (max-width: 980px) {
+      :root { --header-h: 72px; }
+      section { padding: 86px 0; }
+      .menu-toggle { display: flex; }
+      .nav-menu {
+        position: fixed; inset: var(--header-h) 0 auto; padding: 26px 20px 34px;
+        display: grid; gap: 6px; background: white; border-bottom: 1px solid var(--borda);
+        box-shadow: 0 20px 35px rgba(31,58,110,.12); transform: translateY(-130%); opacity: 0; visibility: hidden; transition: .3s ease;
+      }
+      .menu-open .nav-menu { transform: translateY(0); opacity: 1; visibility: visible; }
+      .nav-menu li, .nav-menu a { width: 100%; }
+      .nav-menu a:not(.btn) { display: block; padding: 12px 5px; font-size: 1rem; }
+      .nav-menu .btn { margin-top: 10px; }
+      .hero { min-height: 780px; background-position: 60% center; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .trust-grid { grid-template-columns: repeat(2, 1fr); }
+      .trust-item:nth-child(3) { border-left: 0; border-top: 1px solid var(--borda); }
+      .trust-item:nth-child(4) { border-top: 1px solid var(--borda); }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-media { min-height: 500px; order: 2; }
+      .factory-grid { grid-template-columns: repeat(2, 1fr); }
+      .factory-card:last-child { grid-column: 1 / -1; min-height: 360px; }
+      .products-grid { grid-template-columns: 1fr; }
+      .product-card { min-height: auto; }
+      .diff-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-line { grid-template-columns: repeat(2, 1fr); row-gap: 42px; }
+      .process-line::before { display: none; }
+      .projects-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 350px; }
+      .project-card:nth-child(n) { grid-column: auto; min-height: 0; }
+      .toys-grid { grid-template-columns: repeat(2, 1fr); }
+      .instagram-card { grid-template-columns: auto 1fr; }
+      .instagram-card .btn { grid-column: 1 / -1; width: 100%; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+
+    /* MOBILE */
+    @media (max-width: 640px) {
+      :root { --raio: 20px; }
+      .container { width: min(calc(100% - 28px), var(--container)); }
+      section { padding: 72px 0; }
+      .brand img { width: 42px; height: 42px; }
+      .brand-word { font-size: 1.5rem; }
+      .hero { min-height: 760px; padding-bottom: 100px; background-position: 68% center; }
+      .hero::after { content: ""; position: absolute; inset: 0; background: rgba(22,45,88,.17); pointer-events: none; }
+      .hero .container { position: relative; z-index: 1; }
+      .hero-actions { align-items: stretch; flex-direction: column; }
+      .hero-actions .btn { width: 100%; }
+      .hero-secondary { justify-content: center; }
+      .hero-facts { margin-top: 32px; }
+      .trust-grid { grid-template-columns: 1fr; transform: translateY(-32px); }
+      .trust-item + .trust-item { border-left: 0; border-top: 1px solid var(--borda); }
+      .about { padding-top: 48px; }
+      .about-media { min-height: 430px; }
+      .about-photo { inset: 0 30px 50px 0; }
+      .wood-card { width: 210px; padding: 22px; }
+      .factory-grid { grid-template-columns: 1fr; }
+      .factory-card, .factory-card:last-child { grid-column: auto; min-height: 390px; }
+      .segments-grid { grid-template-columns: 1fr; }
+      .segment-card:last-child:nth-child(odd) { grid-column: auto; }
+      .segment-card { padding: 28px 26px 28px 72px; }
+      .diff-grid { grid-template-columns: 1fr; }
+      .process-line { grid-template-columns: 1fr; }
+      .process-step { padding-left: 78px; min-height: 65px; }
+      .step-number { position: absolute; left: 0; top: 0; margin: 0; }
+      .projects-grid { grid-template-columns: 1fr; grid-auto-rows: 330px; }
+      .project-card:nth-child(n) { grid-column: auto; min-height: 0; }
+      .toys-head { align-items: stretch; flex-direction: column; }
+      .toys-grid {
+        grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: minmax(245px, 82%);
+        overflow-x: auto; padding: 4px 2px 18px; scroll-snap-type: x mandatory; scrollbar-width: thin;
+      }
+      .toy-card { scroll-snap-align: start; }
+      .instagram-wrap { padding-bottom: 72px; }
+      .instagram-card { grid-template-columns: 1fr; text-align: center; }
+      .instagram-icon { margin-inline: auto; }
+      .instagram-card .btn { grid-column: auto; }
+      .cta-band { padding-bottom: 72px; }
+      .cta-box { grid-template-columns: 1fr; }
+      .cta-box .btn { width: 100%; }
+      .form-grid { grid-template-columns: 1fr; }
+      .field.full, .consent { grid-column: auto; }
+      .form-card .btn { width: 100%; }
+      .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+      .footer-brand { grid-column: auto; }
+      .footer-bottom { flex-direction: column; }
+      .whatsapp-float { right: 14px; bottom: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link btn" href="#conteudo">Ir para o conteúdo</a>
+
+  <header class="site-header" id="topo">
+    <div class="container nav-wrap">
+      <a class="brand" href="#inicio" aria-label="Owl Toys — página inicial">
+        <!-- LOGO: substitua assets/owl-toys-logo.webp pelo arquivo definitivo, mantendo o mesmo nome -->
+        <img src="assets/owl-toys-logo.webp" alt="" aria-hidden="true">
+        <span class="brand-word">Owl Toys</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-principal"><span></span></button>
+      <nav aria-label="Navegação principal">
+        <ul class="nav-menu" id="menu-principal">
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#produtos">Produtos</a></li>
+          <li><a href="#segmentos">Segmentos</a></li>
+          <li><a href="#projetos">Projetos</a></li>
+          <li><a href="#contato">Contato</a></li>
+          <li><a class="btn" href="#contato">Solicitar orçamento</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Soluções para espaços infantis</span>
+          <!-- TEXTO DO HERO: edite a chamada principal aqui -->
+          <h1 id="hero-title">Segurança para brincar. Desenvolvimento para crescer.</h1>
+          <p>Projetamos, fabricamos e instalamos playgrounds e ambientes que transformam o brincar em movimento, convivência e aprendizado.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#contato">
+              Solicitar orçamento
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a class="hero-secondary" href="#produtos"><span aria-hidden="true">↓</span> Conheça as soluções</a>
+          </div>
+          <div class="hero-facts" aria-label="Principais atuações">
+            <span class="hero-fact">Playgrounds em eucalipto e aço</span>
+            <span class="hero-fact">Instalação especializada</span>
+            <span class="hero-fact">Instituições e famílias</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust" aria-label="Indicadores de confiança">
+      <div class="container">
+        <div class="trust-grid reveal">
+          <div class="trust-item">
+            <span class="trust-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+            <div><strong>9+ anos</strong><small>de experiência no mercado</small></div>
+          </div>
+          <div class="trust-item">
+            <span class="trust-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V9l8-5 8 5v11"/><path d="M8 20v-6h8v6"/></svg></span>
+            <div><strong>Fabricação própria</strong><small>controle do projeto à entrega</small></div>
+          </div>
+          <div class="trust-item">
+            <span class="trust-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13h12V6H7z"/><path d="M15 9h3l3 4v4h-6z"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></span>
+            <div><strong>Instalação própria</strong><small>execução técnica especializada</small></div>
+          </div>
+          <div class="trust-item">
+            <span class="trust-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"/><circle cx="12" cy="10" r="2"/></svg></span>
+            <div><strong>Atendimento nacional</strong><small>disponibilidade conforme projeto</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="sobre">
+      <div class="container about-grid">
+        <div class="about-media reveal">
+          <!-- FOTO DA LOJA: troque o arquivo abaixo por outra foto, se desejar -->
+          <img class="about-photo" src="assets/entrada-owl-toys.webp" alt="Entrada e showroom da Owl Toys em Aparecida de Goiânia" loading="lazy">
+          <div class="wood-card"><strong>Feito para durar.</strong><span>Madeira selecionada, construção robusta e cuidado em cada instalação.</span></div>
+        </div>
+        <div class="about-copy reveal delay-1">
+          <span class="eyebrow">Sobre a Owl Toys</span>
+          <h2>Estrutura sólida para experiências que ficam na memória.</h2>
+          <p>Somos uma indústria, fabricante e instaladora sediada em Aparecida de Goiânia, especializada em soluções para espaços infantis de uso institucional, coletivo e familiar.</p>
+          <p>Fabricamos playgrounds em eucalipto tratado e em aço, com atenção técnica a cada etapa — do entendimento do espaço ao acabamento final.</p>
+          <ul class="check-list">
+            <li><i aria-hidden="true">✓</i><span>Projetos pensados para o perfil de uso e o espaço disponível.</span></li>
+            <li><i aria-hidden="true">✓</i><span>Materiais escolhidos com foco em segurança, resistência e manutenção.</span></li>
+            <li><i aria-hidden="true">✓</i><span>Orientação clara para compradores institucionais.</span></li>
+          </ul>
+          <a class="link-arrow" href="#processo">Veja como trabalhamos <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="factory" aria-labelledby="fabrica-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Dentro da fábrica</span>
+          <h2 id="fabrica-title">Produção própria, do material bruto ao acabamento.</h2>
+          <p>Nossa estrutura reúne preparação, pintura, organização e expedição. Isso dá mais controle sobre o padrão dos produtos e o andamento de cada projeto.</p>
+        </div>
+        <div class="factory-grid">
+          <figure class="factory-card reveal">
+            <!-- FOTO DA FÁBRICA: estruturas em preparação -->
+            <img src="assets/fabrica-estruturas.webp" alt="Estruturas metálicas preparadas na fábrica da Owl Toys" loading="lazy">
+            <figcaption class="factory-caption"><span class="factory-step">Etapa 01</span><strong>Preparação das estruturas</strong><p>Componentes organizados para seguir às próximas etapas de produção.</p></figcaption>
+          </figure>
+          <figure class="factory-card reveal delay-1">
+            <!-- FOTO DA FÁBRICA: setor de pintura -->
+            <img src="assets/fabrica-pintura.webp" alt="Peças de playground no setor de pintura da fábrica" loading="lazy">
+            <figcaption class="factory-caption"><span class="factory-step">Etapa 02</span><strong>Pintura e acabamento</strong><p>Peças recebem acabamento antes da separação e conferência.</p></figcaption>
+          </figure>
+          <figure class="factory-card reveal delay-2">
+            <img src="assets/logistica-owl-toys.webp" alt="Estruturas organizadas para transporte e entrega" loading="lazy">
+            <figcaption class="factory-caption"><span class="factory-step">Etapa 03</span><strong>Expedição e logística</strong><p>Estruturas preparadas para seguir até o local da instalação.</p></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="products" id="produtos">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Linhas de produto</span>
+          <h2>Uma solução completa para cada ambiente infantil.</h2>
+          <p>Três linhas que podem ser contratadas separadamente ou combinadas em um projeto integrado.</p>
+        </div>
+        <div class="products-grid">
+          <article class="product-card featured reveal">
+            <span class="card-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V8m16 12V8M3 8h18"/><path d="M7 8l3-4h4l3 4M7 12h4v4H7zM14 12h3v8"/></svg></span>
+            <h3>Playgrounds em eucalipto e aço</h3>
+            <p>Estruturas robustas e acolhedoras, dimensionadas para escolas, condomínios, espaços públicos e áreas residenciais.</p>
+            <ul class="mini-list"><li>Configurações sob medida</li><li>Eucalipto tratado ou aço</li><li>Instalação especializada</li></ul>
+            <a class="link-arrow" href="#contato">Pedir orçamento <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="product-card reveal delay-1">
+            <span class="card-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16v13H4z"/><path d="M4 12h16M9 7v13M15 7v13"/></svg></span>
+            <h3>Piso emborrachado</h3>
+            <p>Superfícies adequadas para áreas recreativas, com conforto, absorção de impacto e acabamento organizado.</p>
+            <ul class="mini-list"><li>Composição por área</li><li>Aplicação técnica</li><li>Uso interno e externo</li></ul>
+            <a class="link-arrow" href="#contato">Consultar projeto <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="product-card reveal delay-2">
+            <span class="card-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h8v8H8zM3 14h7v7H3zM14 14h7v7h-7z"/><path d="M11 7h2M6 17h1M17 17h1"/></svg></span>
+            <h3>Brinquedos de diferentes marcas</h3>
+            <p>Seleção de brinquedos pedagógicos e educativos para instituições, profissionais e famílias.</p>
+            <ul class="mini-list"><li>Dagmar e Xalingo</li><li>Junges e Janod</li><li>Opções por faixa etária</li></ul>
+            <a class="link-arrow" href="#contato">Solicitar catálogo <span aria-hidden="true">→</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="segmentos">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Segmentos atendidos</span>
+          <h2>Cada cliente tem uma necessidade. Nós entendemos a diferença.</h2>
+        </div>
+        <div class="segments-grid">
+          <article class="segment-card reveal"><span class="segment-number">01</span><h3>Escolas</h3><p>Catálogo organizado por faixa etária, com soluções que favorecem desenvolvimento motor, autonomia e socialização — menos tela, mais desenvolvimento.</p><span class="segment-tag">Aprendizagem ativa</span></article>
+          <article class="segment-card reveal delay-1"><span class="segment-number">02</span><h3>Clínicas</h3><p>Produtos com função terapêutica explícita para terapia ocupacional e desenvolvimento infantil: coordenação, integração sensorial, atenção e planejamento motor.</p><span class="segment-tag">Função terapêutica</span></article>
+          <article class="segment-card reveal"><span class="segment-number">03</span><h3>Condomínios</h3><p>Playgrounds completos para uso coletivo intenso, com foco em segurança, durabilidade, aproveitamento do espaço e manutenção planejada.</p><span class="segment-tag">Uso coletivo</span></article>
+          <article class="segment-card reveal delay-1"><span class="segment-number">04</span><h3>Governo e prefeituras</h3><p>Apoio técnico ao processo de compra pública, especificações claras, documentação comercial e condução confiável da entrega e instalação.</p><span class="segment-tag">Suporte B2G</span></article>
+          <article class="segment-card reveal"><span class="segment-number">05</span><h3>Famílias e clientes finais</h3><p>Atendimento direto para quem procura brinquedos educativos, presentes e soluções para brincar em casa, com orientação conforme a idade e o objetivo de desenvolvimento.</p><span class="segment-tag">Atendimento B2C</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="differentials" aria-labelledby="diferenciais-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Diferenciais</span>
+          <h2 id="diferenciais-title">Mais controle, clareza e tranquilidade para quem decide.</h2>
+          <p>Uma operação preparada para atender instituições e famílias, do orçamento ao pós-venda.</p>
+        </div>
+        <div class="diff-grid">
+          <article class="diff-card reveal"><span class="diff-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V9l8-5 8 5v11M8 20v-6h8v6"/></svg></span><h3>Fabricação própria</h3><p>Acompanhamento direto de materiais, medidas, acabamento e prazos.</p></article>
+          <article class="diff-card reveal delay-1"><span class="diff-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20l4-4M14 11l5-5M15 5l4 4M8 13l3 3"/><path d="M4 4l16 16"/></svg></span><h3>Instalação inclusa</h3><p>Equipe orientada para executar a montagem e entregar o espaço pronto.</p></article>
+          <article class="diff-card reveal delay-2"><span class="diff-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v5h5M9 13h6M9 17h6"/></svg></span><h3>Suporte a licitação</h3><p>Informações e especificações para apoiar processos de compra pública.</p></article>
+          <article class="diff-card reveal delay-3"><span class="diff-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span><h3>Garantia e durabilidade</h3><p>Construção robusta e orientação de conservação para uso prolongado.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="process" id="processo">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Como funciona</span>
+          <h2>Um processo simples, acompanhado de ponta a ponta.</h2>
+          <p>Você sabe o que acontece em cada etapa e conta com orientação durante todo o projeto.</p>
+        </div>
+        <div class="process-line">
+          <article class="process-step reveal"><span class="step-number">01</span><h3>Visita técnica</h3><p>Entendemos o local, o público, o uso previsto e as prioridades da instituição.</p></article>
+          <article class="process-step reveal delay-1"><span class="step-number">02</span><h3>Projeto e proposta</h3><p>Definimos a solução, os itens, as medidas e as condições comerciais.</p></article>
+          <article class="process-step reveal delay-2"><span class="step-number">03</span><h3>Fabricação e instalação</h3><p>Produzimos, organizamos a logística e executamos a montagem no local.</p></article>
+          <article class="process-step reveal delay-3"><span class="step-number">04</span><h3>Pós-venda</h3><p>Orientamos o uso, a conservação e permanecemos disponíveis após a entrega.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projetos">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Projetos realizados</span>
+          <h2>Da fábrica para espaços que ganham vida.</h2>
+          <p>Playgrounds, pisos e circuitos instalados para diferentes ambientes de uso coletivo.</p>
+        </div>
+        <div class="projects-grid">
+          <figure class="project-card reveal"><img src="assets/projeto-parque-publico.webp" alt="Conjunto de brinquedos instalado em área pública arborizada" loading="lazy"><figcaption class="project-caption"><strong>Área recreativa completa</strong><span>Diferentes brinquedos reunidos em um mesmo espaço</span></figcaption></figure>
+          <figure class="project-card reveal delay-1"><img src="assets/projeto-escolar.webp" alt="Playground colorido instalado em área de escola" loading="lazy"><figcaption class="project-caption"><strong>Playground institucional</strong><span>Estrutura planejada para uso coletivo</span></figcaption></figure>
+          <figure class="project-card reveal"><img src="assets/projeto-piso-recreativo.webp" alt="Área recreativa com piso emborrachado colorido e mobiliário" loading="lazy"><figcaption class="project-caption"><strong>Piso emborrachado</strong><span>Proteção e identidade visual para o ambiente</span></figcaption></figure>
+          <figure class="project-card reveal delay-1"><img src="assets/projeto-playground-completo.webp" alt="Playground com torre, escorregador e balanços" loading="lazy"><figcaption class="project-caption"><strong>Playground completo</strong><span>Torre, escorregador e balanços em composição integrada</span></figcaption></figure>
+          <figure class="project-card reveal delay-2"><img src="assets/projeto-piso-bancos.webp" alt="Piso emborrachado com bancos em área de convivência" loading="lazy"><figcaption class="project-caption"><strong>Área de convivência</strong><span>Piso técnico e mobiliário para o uso diário</span></figcaption></figure>
+          <figure class="project-card reveal"><img src="assets/projeto-circuito-motor.webp" alt="Circuito recreativo colorido instalado em área externa" loading="lazy"><figcaption class="project-caption"><strong>Circuito de desenvolvimento motor</strong><span>Movimento, equilíbrio e coordenação em uma experiência ativa</span></figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="toys-showcase" id="brinquedos">
+      <div class="container">
+        <div class="toys-head reveal">
+          <div class="section-head">
+            <span class="eyebrow">Seleção de brinquedos</span>
+            <h2>Alguns dos brinquedos que vendemos.</h2>
+            <p>Trabalhamos com brinquedos pedagógicos Dagmar e produtos das marcas Xalingo, Junges e Janod, com opções para diferentes idades e objetivos de desenvolvimento.</p>
+          </div>
+        </div>
+        <!-- PRODUTOS: troque imagens, nomes e descrições nos cards abaixo -->
+        <div class="toys-grid">
+          <article class="toy-card reveal">
+            <div class="toy-photo"><img src="assets/produto-cubos-associacao.webp" alt="Cubos de associação ilustrados em madeira" loading="lazy"></div>
+            <div class="toy-info"><span class="toy-category">Associação e memória</span><h3>Cubos de Associação</h3><p>Imagens ilustradas para estimular percepção, linguagem e reconhecimento visual.</p></div>
+          </article>
+          <article class="toy-card reveal delay-1">
+            <div class="toy-photo"><img src="assets/produto-carro-pinos.webp" alt="Carro de madeira com pinos coloridos" loading="lazy"></div>
+            <div class="toy-info"><span class="toy-category">Coordenação motora</span><h3>Carro com Pinos</h3><p>Encaixe de cores e movimentos que trabalham precisão, atenção e coordenação.</p></div>
+          </article>
+          <article class="toy-card reveal delay-2">
+            <div class="toy-photo"><img src="assets/produto-formas-elefante.webp" alt="Jogo Formas e Cores Elefante" loading="lazy"></div>
+            <div class="toy-info"><span class="toy-category">Formas e cores</span><h3>Formas e Cores Elefante</h3><p>Atividade de encaixe e classificação para explorar cores, formas e planejamento.</p></div>
+          </article>
+          <article class="toy-card reveal delay-3">
+            <div class="toy-photo"><img src="assets/produto-escala-numerica.webp" alt="Escala numérica de madeira de um a cinco" loading="lazy"></div>
+            <div class="toy-info"><span class="toy-category">Matemática inicial</span><h3>Escala Numérica 1 a 5</h3><p>Representação concreta de quantidades para apoiar contagem e comparação.</p></div>
+          </article>
+          <article class="toy-card reveal">
+            <div class="toy-photo"><img src="assets/produto-painel-escolar.webp" alt="Painel magnético com cenário de sala de aula" loading="lazy"></div>
+            <div class="toy-info"><span class="toy-category">Linguagem e rotina</span><h3>Painel Magnético Escolar</h3><p>Personagens e objetos móveis para criar histórias, rotinas e situações educativas.</p></div>
+          </article>
+          <article class="toy-card reveal delay-1">
+            <div class="toy-photo"><img src="assets/produto-painel-animais.webp" alt="Painel magnético com animais selvagens" loading="lazy"></div>
+            <div class="toy-info"><span class="toy-category">Imaginação e narrativa</span><h3>Painel Magnético Animais</h3><p>Cenário e peças móveis para associação, vocabulário e criação de histórias.</p></div>
+          </article>
+          <article class="toy-card reveal delay-2">
+            <div class="toy-photo"><img src="assets/produto-alfabeto-movel.webp" alt="Alfabeto móvel de madeira organizado em expositor" loading="lazy"></div>
+            <div class="toy-info"><span class="toy-category">Alfabetização</span><h3>Alfabeto Móvel</h3><p>Letras manipuláveis para formação de palavras e reconhecimento do alfabeto.</p></div>
+          </article>
+          <article class="toy-card reveal delay-3">
+            <div class="toy-photo cover"><img src="assets/produto-gangorra-abelha.webp" alt="Gangorra de mola em formato de abelhinha" loading="lazy"></div>
+            <div class="toy-info"><span class="toy-category">Movimento e equilíbrio</span><h3>Gangorra Mola Abelhinha</h3><p>Brinquedo para áreas externas que favorece equilíbrio e experiência corporal.</p></div>
+          </article>
+        </div>
+        <div class="catalog-action reveal">
+          <a class="btn" href="#contato">Solicitar catálogo completo <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <div class="instagram-wrap">
+      <div class="container">
+        <!-- INSTAGRAM: altere o link e o usuário aqui, caso o perfil mude -->
+        <div class="instagram-card reveal">
+          <span class="instagram-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg>
+          </span>
+          <div class="instagram-copy"><small>Acompanhe novidades e projetos</small><strong>@owl.toys</strong><p>Veja lançamentos, bastidores da fabricação e espaços entregues.</p></div>
+          <a class="btn" href="https://www.instagram.com/owl.toys/" target="_blank" rel="noopener">Seguir no Instagram</a>
+        </div>
+      </div>
+    </div>
+
+    <section class="cta-band">
+      <div class="container">
+        <div class="cta-box reveal">
+          <div><h2>Seu espaço pode fazer mais pelo desenvolvimento infantil.</h2><p>Conte o que sua instituição precisa. A Owl Toys ajuda a transformar a necessidade em uma solução clara e viável.</p></div>
+          <a class="btn" href="#contato">Falar com um especialista</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contato">
+      <div class="container contact-grid">
+        <div class="contact-copy reveal">
+          <span class="eyebrow">Contato</span>
+          <h2>Vamos planejar seu projeto?</h2>
+          <p>Preencha o formulário ou fale diretamente com nossa equipe. Quanto mais detalhes você enviar, mais objetivo será o primeiro atendimento.</p>
+          <ul class="contact-list">
+            <!-- CONTATOS: confirme e edite os dados nas três linhas abaixo -->
+            <li><span class="trust-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h3l2 5-2 1c1 3 3 5 6 6l1-2 5 2v3c0 1-1 2-2 2C10 21 3 14 3 6c0-1 1-2 2-2z"/></svg></span><div><b>Telefone e WhatsApp</b><a href="tel:+5562991919574">(62) 99191-9574</a></div></li>
+            <li><span class="trust-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/></svg></span><div><b>E-mail</b><a href="mailto:contato@owltoys.com.br">contato@owltoys.com.br</a></div></li>
+            <li><span class="trust-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"/><circle cx="12" cy="10" r="2"/></svg></span><div><b>Endereço</b><span>Aparecida de Goiânia, GO — Brasil</span></div></li>
+          </ul>
+        </div>
+
+        <!-- FORMULÁRIO: substitua SEU-EMAIL-AQUI pelo e-mail que receberá as mensagens -->
+        <form class="form-card reveal delay-1" action="https://formsubmit.co/SEU-EMAIL-AQUI" method="POST">
+          <input type="hidden" name="_subject" value="Novo pedido de orçamento — Site Owl Toys">
+          <input type="hidden" name="_captcha" value="false">
+          <h3>Solicite um orçamento</h3>
+          <div class="form-grid">
+            <div class="field"><label for="nome">Nome *</label><input id="nome" name="nome" type="text" autocomplete="name" required></div>
+            <div class="field"><label for="instituicao">Instituição / empresa *</label><input id="instituicao" name="instituicao" type="text" autocomplete="organization" required></div>
+            <div class="field"><label for="email">E-mail *</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+            <div class="field"><label for="telefone">Telefone / WhatsApp *</label><input id="telefone" name="telefone" type="tel" autocomplete="tel" required></div>
+            <div class="field"><label for="segmento">Segmento *</label><select id="segmento" name="segmento" required><option value="" selected disabled>Selecione</option><option>Escola</option><option>Clínica</option><option>Condomínio</option><option>Prefeitura / órgão público</option><option>Família / cliente final</option><option>Outro</option></select></div>
+            <div class="field"><label for="interesse">Interesse principal *</label><select id="interesse" name="interesse" required><option value="" selected disabled>Selecione</option><option>Playground em eucalipto</option><option>Playground em aço</option><option>Piso emborrachado</option><option>Brinquedos</option><option>Projeto completo</option></select></div>
+            <div class="field full"><label for="cidade">Cidade e estado</label><input id="cidade" name="cidade" type="text" autocomplete="address-level2" placeholder="Ex.: Goiânia, GO"></div>
+            <div class="field full"><label for="mensagem">Conte um pouco sobre o projeto *</label><textarea id="mensagem" name="mensagem" required placeholder="Espaço disponível, faixa etária, prazo desejado e outras informações importantes."></textarea></div>
+            <label class="consent"><input type="checkbox" name="consentimento" required><span>Autorizo o contato da Owl Toys para responder a esta solicitação.</span></label>
+            <button class="btn" type="submit">Enviar solicitação <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><a class="brand" href="#inicio"><img src="assets/owl-toys-logo.webp" alt="" aria-hidden="true"><span class="brand-word">Owl Toys</span></a><p>Playgrounds em eucalipto e aço, pisos emborrachados e brinquedos para instituições e famílias.</p></div>
+        <div><p class="footer-title">Navegação</p><ul class="footer-links"><li><a href="#sobre">Sobre</a></li><li><a href="#produtos">Produtos</a></li><li><a href="#segmentos">Segmentos</a></li><li><a href="#processo">Como funciona</a></li></ul></div>
+        <div><p class="footer-title">Contato</p><ul class="footer-links"><li><a href="tel:+5562991919574">(62) 99191-9574</a></li><li><a href="mailto:contato@owltoys.com.br">contato@owltoys.com.br</a></li><li><a class="footer-instagram" href="https://www.instagram.com/owl.toys/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg>@owl.toys</a></li><li>Aparecida de Goiânia, GO</li><li>CNPJ: 27.855.598/0001-57</li></ul></div>
+      </div>
+      <div class="footer-bottom"><span>© <span id="ano"></span> Owl Toys. Todos os direitos reservados.</span><span>Segurança para brincar. Desenvolvimento para crescer.</span></div>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP: confirme o número no link abaixo. Formato: 55 + DDD + número, sem espaços -->
+  <a class="whatsapp-float" href="https://wa.me/5562991919574?text=Olá%2C%20gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener" aria-label="Falar com a Owl Toys pelo WhatsApp">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M19.11 17.42c-.27-.14-1.61-.8-1.86-.89-.25-.09-.43-.14-.61.14-.18.27-.7.89-.86 1.07-.16.18-.32.2-.59.07-.27-.14-1.15-.42-2.19-1.35-.81-.72-1.36-1.61-1.52-1.88-.16-.27-.02-.42.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.02-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.27s.98 2.63 1.11 2.81c.14.18 1.92 2.93 4.65 4.11.65.28 1.16.45 1.56.57.66.21 1.25.18 1.72.11.52-.08 1.61-.66 1.84-1.29.23-.64.23-1.2.16-1.31-.07-.11-.25-.18-.52-.32z"/><path d="M16.03 3C8.84 3 3 8.75 3 15.84c0 2.26.6 4.47 1.73 6.41L3 28.5l6.47-1.69a13.14 13.14 0 0 0 6.56 1.75h.01C23.22 28.56 29 22.81 29 15.72 29 8.64 23.21 3 16.03 3zm0 23.4h-.01c-2.02 0-4-.54-5.73-1.56l-.41-.24-3.84 1 1.03-3.69-.27-.43a10.57 10.57 0 0 1-1.63-5.64c0-5.9 4.87-10.7 10.87-10.7 6 0 10.79 4.69 10.79 10.59 0 5.89-4.8 10.67-10.8 10.67z"/></svg>
+  </a>
+
+  <script>
+    /* ==========================================================
+       INTERAÇÕES — menu mobile, animações e navegação ativa
+       ========================================================== */
+    const body = document.body;
+    const header = document.querySelector('.site-header');
+    const toggle = document.querySelector('.menu-toggle');
+    const menuLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
+    const sections = document.querySelectorAll('main section[id]');
+
+    toggle.addEventListener('click', () => {
+      const open = body.classList.toggle('menu-open');
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+    });
+
+    menuLinks.forEach(link => link.addEventListener('click', () => {
+      body.classList.remove('menu-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Abrir menu');
+    }));
+
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 16);
+      let current = '';
+      sections.forEach(section => {
+        if (window.scrollY >= section.offsetTop - 150) current = section.id;
+      });
+      menuLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + current));
+    }, { passive: true });
+
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    document.getElementById('ano').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
