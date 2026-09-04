@@ -182,6 +182,26 @@
     .trust-item strong { display: block; color: var(--marinho); font-family: "Baloo 2"; font-size: 1.23rem; line-height: 1.2; }
     .trust-item small { display: block; margin-top: 4px; color: var(--texto-suave); font-size: .76rem; line-height: 1.45; }
 
+    /* DESTAQUE VISUAL — seleção de trabalhos antes da apresentação institucional */
+    .work-preview { padding: 54px 0 104px; background: var(--branco); }
+    .work-preview-head {
+      margin-bottom: 34px; display: flex; align-items: end; justify-content: space-between; gap: 40px;
+    }
+    .work-preview-head h2 { max-width: 760px; }
+    .work-preview-head p { max-width: 350px; color: var(--texto-suave); }
+    .work-gallery {
+      display: grid; grid-template-columns: 1.18fr .82fr .82fr; grid-template-rows: repeat(2, 245px); gap: 18px;
+    }
+    .work-shot { position: relative; overflow: hidden; border-radius: 24px; background: var(--marinho); }
+    .work-shot:first-child { grid-row: span 2; }
+    .work-shot:last-child { grid-column: span 2; }
+    .work-shot img { height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
+    .work-shot:hover img { transform: scale(1.035); }
+    .work-shot::after { content: ""; position: absolute; inset: 44% 0 0; background: linear-gradient(transparent, rgba(15,32,64,.86)); }
+    .work-shot figcaption { position: absolute; z-index: 2; left: 22px; right: 22px; bottom: 18px; color: white; }
+    .work-shot strong { display: block; font-family: "Baloo 2"; font-size: 1.18rem; line-height: 1.15; }
+    .work-shot span { display: block; margin-top: 4px; color: #e1eaf6; font-size: .76rem; }
+
     /* SOBRE */
     .about { padding-top: 75px; }
     .about-grid { display: grid; grid-template-columns: .95fr 1.05fr; gap: clamp(48px, 7vw, 90px); align-items: center; }
@@ -447,6 +467,10 @@
       .trust-item:nth-child(n+3) { border-top: 1px solid var(--borda); }
       .trust-item:nth-child(odd) { border-left: 0; }
       .trust-item:nth-child(5) { grid-column: 1 / -1; }
+      .work-preview-head { align-items: start; flex-direction: column; gap: 14px; }
+      .work-gallery { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 320px); }
+      .work-shot:first-child { grid-row: auto; }
+      .work-shot:last-child { grid-column: auto; }
       .about-grid { grid-template-columns: 1fr; }
       .about-media { min-height: 500px; order: 2; }
       .factory-grid { grid-template-columns: repeat(2, 1fr); }
@@ -482,6 +506,9 @@
       .hero-facts { margin-top: 32px; }
       .trust-grid { grid-template-columns: 1fr; transform: translateY(-32px); }
       .trust-item + .trust-item { border-left: 0; border-top: 1px solid var(--borda); }
+      .work-preview { padding: 34px 0 72px; }
+      .work-gallery { grid-template-columns: 1fr; grid-template-rows: none; }
+      .work-shot { min-height: 275px; }
       .about { padding-top: 48px; }
       .about-media { min-height: 430px; }
       .about-photo { inset: 0 30px 50px 0; }
@@ -538,7 +565,7 @@
           <li><a href="#segmentos">Segmentos</a></li>
           <li><a href="#projetos">Projetos</a></li>
           <li><a href="#contato">Contato</a></li>
-          <li><a class="btn" href="#contato">Solicitar orçamento</a></li>
+          <li><a class="btn" href="#contato">Fale conosco</a></li>
         </ul>
       </nav>
     </div>
@@ -553,11 +580,7 @@
           <h1 id="hero-title">Segurança para brincar. Desenvolvimento para crescer.</h1>
           <p>Projetamos, fabricamos e instalamos playgrounds e ambientes que transformam o brincar em movimento, convivência e aprendizado.</p>
           <div class="hero-actions">
-            <a class="btn" href="#contato">
-              Solicitar orçamento
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
-            <a class="hero-secondary" href="#produtos"><span aria-hidden="true">↓</span> Conheça as soluções</a>
+            <a class="hero-secondary" href="#trabalhos"><span aria-hidden="true">↓</span> Conheça nossos trabalhos</a>
           </div>
           <div class="hero-facts" aria-label="Principais atuações">
             <span class="hero-fact">Playgrounds em eucalipto e aço</span>
@@ -591,6 +614,37 @@
             <span class="trust-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"/><circle cx="12" cy="10" r="2"/></svg></span>
             <div><strong>Atendimento nacional</strong><small>disponibilidade conforme projeto</small></div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="work-preview" id="trabalhos" aria-labelledby="trabalhos-title">
+      <div class="container">
+        <div class="work-preview-head reveal">
+          <div>
+            <span class="eyebrow">Trabalhos Owl Toys</span>
+            <h2 id="trabalhos-title">Espaços planejados para viver boas experiências.</h2>
+          </div>
+          <p>Uma seleção de estruturas, instalações e ambientes entregues para diferentes formas de brincar e conviver.</p>
+        </div>
+        <!-- FOTOS DE TRABALHOS: substitua os arquivos abaixo mantendo os mesmos nomes -->
+        <div class="work-gallery">
+          <figure class="work-shot reveal">
+            <img src="assets/obra-pergolado-convivencia.webp" alt="Pergolado de madeira instalado em área de convivência" loading="lazy">
+            <figcaption><strong>Áreas de convivência</strong><span>Estruturas que valorizam o ambiente</span></figcaption>
+          </figure>
+          <figure class="work-shot reveal delay-1">
+            <img src="assets/obra-instalacao-playground.webp" alt="Equipe trabalhando na instalação de playground de madeira" loading="lazy">
+            <figcaption><strong>Instalação em campo</strong><span>Cuidado técnico em cada etapa</span></figcaption>
+          </figure>
+          <figure class="work-shot reveal delay-2">
+            <img src="assets/obra-criancas-playground.webp" alt="Crianças brincando em ponte de playground de madeira" loading="lazy">
+            <figcaption><strong>Brincar em movimento</strong><span>Experiências que convidam à interação</span></figcaption>
+          </figure>
+          <figure class="work-shot reveal delay-3">
+            <img src="assets/obra-ponte-playground.webp" alt="Playground de eucalipto com torre, rampa e ponte suspensa" loading="lazy">
+            <figcaption><strong>Playgrounds em eucalipto</strong><span>Projetos robustos para diferentes espaços</span></figcaption>
+          </figure>
         </div>
       </div>
     </section>
