@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Owl Toys | Playgrounds e soluções para espaços infantis</title>
-  <meta name="description" content="Playgrounds em eucalipto e aço, pisos emborrachados e brinquedos para escolas, clínicas, condomínios, órgãos públicos e famílias.">
+  <title>Owl Toys | Playgrounds, pisos e brinquedos pedagógicos</title>
+  <meta name="description" content="Owl Toys: playgrounds em eucalipto e aço, pisos emborrachados e brinquedos pedagógicos para escolas, clínicas, condomínios e famílias em todo o Brasil.">
   <meta name="theme-color" content="#1F3A6E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -168,11 +168,11 @@
     .trust { padding: 0; background: var(--branco); }
     .trust-grid {
       transform: translateY(-34px);
-      display: grid; grid-template-columns: repeat(4, 1fr);
+      display: grid; grid-template-columns: repeat(5, 1fr);
       border: 1px solid var(--borda); border-radius: var(--raio);
       background: var(--branco); box-shadow: var(--sombra); overflow: hidden;
     }
-    .trust-item { min-height: 124px; padding: 24px; display: flex; align-items: center; gap: 16px; }
+    .trust-item { min-height: 124px; padding: 22px 18px; display: flex; align-items: center; gap: 14px; }
     .trust-item + .trust-item { border-left: 1px solid var(--borda); }
     .trust-icon, .card-icon, .diff-icon {
       flex: 0 0 auto; display: grid; place-items: center; border-radius: 16px; background: var(--azul-claro); color: var(--azul);
@@ -297,6 +297,7 @@
     .project-card:nth-child(1), .project-card:nth-child(2) { grid-column: span 6; }
     .project-card:nth-child(3), .project-card:nth-child(4), .project-card:nth-child(5) { grid-column: span 4; }
     .project-card:nth-child(6) { grid-column: span 12; min-height: 280px; }
+    .project-card:nth-child(7), .project-card:nth-child(8) { grid-column: span 6; }
     .project-card img { height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
     .project-card:hover img { transform: scale(1.035); }
     .project-card::after { content: ""; position: absolute; inset: 35% 0 0; background: linear-gradient(transparent, rgba(15,32,64,.92)); }
@@ -372,7 +373,8 @@
     .contact-list b { display: block; color: var(--marinho); font-size: .9rem; }
     .contact-list span, .contact-list a { color: var(--texto-suave); font-size: .88rem; }
     .form-card { padding: clamp(28px, 4vw, 42px); border: 1px solid var(--borda); border-radius: var(--raio); background: white; box-shadow: var(--sombra); }
-    .form-card h3 { margin-bottom: 26px; font-size: 1.65rem; }
+    .form-card h3 { margin-bottom: 8px; font-size: 1.65rem; }
+    .form-intro { margin-bottom: 26px; color: var(--texto-suave); font-size: .9rem; }
     .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
     .field { display: grid; gap: 7px; }
     .field.full { grid-column: 1 / -1; }
@@ -442,8 +444,9 @@
       .hero { min-height: 780px; background-position: 60% center; }
       .hero-grid { grid-template-columns: 1fr; }
       .trust-grid { grid-template-columns: repeat(2, 1fr); }
-      .trust-item:nth-child(3) { border-left: 0; border-top: 1px solid var(--borda); }
-      .trust-item:nth-child(4) { border-top: 1px solid var(--borda); }
+      .trust-item:nth-child(n+3) { border-top: 1px solid var(--borda); }
+      .trust-item:nth-child(odd) { border-left: 0; }
+      .trust-item:nth-child(5) { grid-column: 1 / -1; }
       .about-grid { grid-template-columns: 1fr; }
       .about-media { min-height: 500px; order: 2; }
       .factory-grid { grid-template-columns: repeat(2, 1fr); }
@@ -581,6 +584,10 @@
             <div><strong>Instalação própria</strong><small>execução técnica especializada</small></div>
           </div>
           <div class="trust-item">
+            <span class="trust-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h8v8H8zM3 14h7v7H3zM14 14h7v7h-7z"/><path d="M11 7h2M6 17h1M17 17h1"/></svg></span>
+            <div><strong>Brinquedos pedagógicos</strong><small>vendas para instituições e famílias</small></div>
+          </div>
+          <div class="trust-item">
             <span class="trust-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"/><circle cx="12" cy="10" r="2"/></svg></span>
             <div><strong>Atendimento nacional</strong><small>disponibilidade conforme projeto</small></div>
           </div>
@@ -597,41 +604,15 @@
         </div>
         <div class="about-copy reveal delay-1">
           <span class="eyebrow">Sobre a Owl Toys</span>
-          <h2>Estrutura sólida para experiências que ficam na memória.</h2>
-          <p>Somos uma indústria, fabricante e instaladora sediada em Aparecida de Goiânia, especializada em soluções para espaços infantis de uso institucional, coletivo e familiar.</p>
-          <p>Fabricamos playgrounds em eucalipto tratado e em aço, com atenção técnica a cada etapa — do entendimento do espaço ao acabamento final.</p>
+          <h2>Soluções completas para brincar, aprender e crescer.</h2>
+          <p>Há mais de 9 anos, a Owl Toys fabrica, entrega e instala soluções para espaços infantis. Sediada em Aparecida de Goiânia, GO, atua com playgrounds de eucalipto tratado, equipamentos para parques em aço, pisos emborrachados e brinquedos pedagógicos e educativos.</p>
+          <p>Atendemos escolas, creches, clínicas, condomínios, empresas, espaços de lazer e famílias em todo o Brasil. Nossos produtos ajudam a criar ambientes seguros e estimulantes, que favorecem aprendizagem, criatividade, interação social e desenvolvimento infantil.</p>
           <ul class="check-list">
-            <li><i aria-hidden="true">✓</i><span>Projetos pensados para o perfil de uso e o espaço disponível.</span></li>
-            <li><i aria-hidden="true">✓</i><span>Materiais escolhidos com foco em segurança, resistência e manutenção.</span></li>
-            <li><i aria-hidden="true">✓</i><span>Orientação clara para compradores institucionais.</span></li>
+            <li><i aria-hidden="true">✓</i><span>Planejamento conforme o espaço, a faixa etária e a intensidade de uso.</span></li>
+            <li><i aria-hidden="true">✓</i><span>Fabricação própria, entrega e instalação especializada.</span></li>
+            <li><i aria-hidden="true">✓</i><span>Atendimento a instituições, órgãos públicos e clientes finais.</span></li>
           </ul>
           <a class="link-arrow" href="#processo">Veja como trabalhamos <span aria-hidden="true">→</span></a>
-        </div>
-      </div>
-    </section>
-
-    <section class="factory" aria-labelledby="fabrica-title">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow">Dentro da fábrica</span>
-          <h2 id="fabrica-title">Produção própria, do material bruto ao acabamento.</h2>
-          <p>Nossa estrutura reúne preparação, pintura, organização e expedição. Isso dá mais controle sobre o padrão dos produtos e o andamento de cada projeto.</p>
-        </div>
-        <div class="factory-grid">
-          <figure class="factory-card reveal">
-            <!-- FOTO DA FÁBRICA: estruturas em preparação -->
-            <img src="assets/fabrica-estruturas.webp" alt="Estruturas metálicas preparadas na fábrica da Owl Toys" loading="lazy">
-            <figcaption class="factory-caption"><span class="factory-step">Etapa 01</span><strong>Preparação das estruturas</strong><p>Componentes organizados para seguir às próximas etapas de produção.</p></figcaption>
-          </figure>
-          <figure class="factory-card reveal delay-1">
-            <!-- FOTO DA FÁBRICA: setor de pintura -->
-            <img src="assets/fabrica-pintura.webp" alt="Peças de playground no setor de pintura da fábrica" loading="lazy">
-            <figcaption class="factory-caption"><span class="factory-step">Etapa 02</span><strong>Pintura e acabamento</strong><p>Peças recebem acabamento antes da separação e conferência.</p></figcaption>
-          </figure>
-          <figure class="factory-card reveal delay-2">
-            <img src="assets/logistica-owl-toys.webp" alt="Estruturas organizadas para transporte e entrega" loading="lazy">
-            <figcaption class="factory-caption"><span class="factory-step">Etapa 03</span><strong>Expedição e logística</strong><p>Estruturas preparadas para seguir até o local da instalação.</p></figcaption>
-          </figure>
         </div>
       </div>
     </section>
@@ -641,7 +622,7 @@
         <div class="section-head reveal">
           <span class="eyebrow">Linhas de produto</span>
           <h2>Uma solução completa para cada ambiente infantil.</h2>
-          <p>Três linhas que podem ser contratadas separadamente ou combinadas em um projeto integrado.</p>
+          <p>Escolha uma linha ou combine soluções para criar o espaço completo.</p>
         </div>
         <div class="products-grid">
           <article class="product-card featured reveal">
@@ -669,6 +650,32 @@
       </div>
     </section>
 
+    <section class="factory" aria-labelledby="fabrica-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Dentro da fábrica</span>
+          <h2 id="fabrica-title">Produção própria, do material bruto ao acabamento.</h2>
+          <p>Preparação, pintura e expedição acompanhadas pela nossa equipe para manter o padrão de cada projeto.</p>
+        </div>
+        <div class="factory-grid">
+          <figure class="factory-card reveal">
+            <!-- FOTO DA FÁBRICA: estruturas em preparação -->
+            <img src="assets/fabrica-estruturas.webp" alt="Estruturas metálicas preparadas na fábrica da Owl Toys" loading="lazy">
+            <figcaption class="factory-caption"><span class="factory-step">Etapa 01</span><strong>Preparação das estruturas</strong><p>Componentes organizados para seguir às próximas etapas de produção.</p></figcaption>
+          </figure>
+          <figure class="factory-card reveal delay-1">
+            <!-- FOTO DA FÁBRICA: setor de pintura -->
+            <img src="assets/fabrica-pintura.webp" alt="Peças de playground no setor de pintura da fábrica" loading="lazy">
+            <figcaption class="factory-caption"><span class="factory-step">Etapa 02</span><strong>Pintura e acabamento</strong><p>Peças recebem acabamento antes da separação e conferência.</p></figcaption>
+          </figure>
+          <figure class="factory-card reveal delay-2">
+            <img src="assets/logistica-owl-toys.webp" alt="Estruturas organizadas para transporte e entrega" loading="lazy">
+            <figcaption class="factory-caption"><span class="factory-step">Etapa 03</span><strong>Expedição e logística</strong><p>Estruturas preparadas para seguir até o local da instalação.</p></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
     <section id="segmentos">
       <div class="container">
         <div class="section-head reveal">
@@ -690,7 +697,6 @@
         <div class="section-head reveal">
           <span class="eyebrow">Diferenciais</span>
           <h2 id="diferenciais-title">Mais controle, clareza e tranquilidade para quem decide.</h2>
-          <p>Uma operação preparada para atender instituições e famílias, do orçamento ao pós-venda.</p>
         </div>
         <div class="diff-grid">
           <article class="diff-card reveal"><span class="diff-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V9l8-5 8 5v11M8 20v-6h8v6"/></svg></span><h3>Fabricação própria</h3><p>Acompanhamento direto de materiais, medidas, acabamento e prazos.</p></article>
@@ -706,7 +712,6 @@
         <div class="section-head reveal">
           <span class="eyebrow">Como funciona</span>
           <h2>Um processo simples, acompanhado de ponta a ponta.</h2>
-          <p>Você sabe o que acontece em cada etapa e conta com orientação durante todo o projeto.</p>
         </div>
         <div class="process-line">
           <article class="process-step reveal"><span class="step-number">01</span><h3>Visita técnica</h3><p>Entendemos o local, o público, o uso previsto e as prioridades da instituição.</p></article>
@@ -722,7 +727,6 @@
         <div class="section-head reveal">
           <span class="eyebrow">Projetos realizados</span>
           <h2>Da fábrica para espaços que ganham vida.</h2>
-          <p>Playgrounds, pisos e circuitos instalados para diferentes ambientes de uso coletivo.</p>
         </div>
         <div class="projects-grid">
           <figure class="project-card reveal"><img src="assets/projeto-parque-publico.webp" alt="Conjunto de brinquedos instalado em área pública arborizada" loading="lazy"><figcaption class="project-caption"><strong>Área recreativa completa</strong><span>Diferentes brinquedos reunidos em um mesmo espaço</span></figcaption></figure>
@@ -731,6 +735,8 @@
           <figure class="project-card reveal delay-1"><img src="assets/projeto-playground-completo.webp" alt="Playground com torre, escorregador e balanços" loading="lazy"><figcaption class="project-caption"><strong>Playground completo</strong><span>Torre, escorregador e balanços em composição integrada</span></figcaption></figure>
           <figure class="project-card reveal delay-2"><img src="assets/projeto-piso-bancos.webp" alt="Piso emborrachado com bancos em área de convivência" loading="lazy"><figcaption class="project-caption"><strong>Área de convivência</strong><span>Piso técnico e mobiliário para o uso diário</span></figcaption></figure>
           <figure class="project-card reveal"><img src="assets/projeto-circuito-motor.webp" alt="Circuito recreativo colorido instalado em área externa" loading="lazy"><figcaption class="project-caption"><strong>Circuito de desenvolvimento motor</strong><span>Movimento, equilíbrio e coordenação em uma experiência ativa</span></figcaption></figure>
+          <figure class="project-card reveal delay-1"><img src="assets/projeto-playground-eucalipto-multiplo.webp" alt="Playground amplo de eucalipto com torres, pontes, escorregadores e balanços" loading="lazy"><figcaption class="project-caption"><strong>Playground em eucalipto</strong><span>Estrutura completa com múltiplas atividades para brincar em grupo</span></figcaption></figure>
+          <figure class="project-card reveal delay-2"><img src="assets/projeto-playground-parque-aco.webp" alt="Playground de aço instalado em área verde com torres, túneis e escorregadores" loading="lazy"><figcaption class="project-caption"><strong>Parque infantil em aço</strong><span>Composição de grande porte para áreas abertas e uso coletivo</span></figcaption></figure>
         </div>
       </div>
     </section>
@@ -801,7 +807,7 @@
     <section class="cta-band">
       <div class="container">
         <div class="cta-box reveal">
-          <div><h2>Seu espaço pode fazer mais pelo desenvolvimento infantil.</h2><p>Conte o que sua instituição precisa. A Owl Toys ajuda a transformar a necessidade em uma solução clara e viável.</p></div>
+          <div><h2>Vamos transformar seu espaço?</h2><p>Conte sua necessidade e receba uma orientação da nossa equipe.</p></div>
           <a class="btn" href="#contato">Falar com um especialista</a>
         </div>
       </div>
@@ -812,7 +818,7 @@
         <div class="contact-copy reveal">
           <span class="eyebrow">Contato</span>
           <h2>Vamos planejar seu projeto?</h2>
-          <p>Preencha o formulário ou fale diretamente com nossa equipe. Quanto mais detalhes você enviar, mais objetivo será o primeiro atendimento.</p>
+          <p>Preencha os dados e continue pelo WhatsApp. Sua solicitação chegará organizada para nossa equipe.</p>
           <ul class="contact-list">
             <!-- CONTATOS: confirme e edite os dados nas três linhas abaixo -->
             <li><span class="trust-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h3l2 5-2 1c1 3 3 5 6 6l1-2 5 2v3c0 1-1 2-2 2C10 21 3 14 3 6c0-1 1-2 2-2z"/></svg></span><div><b>Telefone e WhatsApp</b><a href="tel:+5562991919574">(62) 99191-9574</a></div></li>
@@ -821,14 +827,13 @@
           </ul>
         </div>
 
-        <!-- FORMULÁRIO: substitua SEU-EMAIL-AQUI pelo e-mail que receberá as mensagens -->
-        <form class="form-card reveal delay-1" action="https://formsubmit.co/SEU-EMAIL-AQUI" method="POST">
-          <input type="hidden" name="_subject" value="Novo pedido de orçamento — Site Owl Toys">
-          <input type="hidden" name="_captcha" value="false">
+        <!-- FORMULÁRIO WHATSAPP: as respostas são organizadas em uma mensagem para o número da empresa -->
+        <form class="form-card reveal delay-1" id="orcamento-form">
           <h3>Solicite um orçamento</h3>
+          <p class="form-intro">Ao continuar, revise e envie a mensagem pelo WhatsApp.</p>
           <div class="form-grid">
             <div class="field"><label for="nome">Nome *</label><input id="nome" name="nome" type="text" autocomplete="name" required></div>
-            <div class="field"><label for="instituicao">Instituição / empresa *</label><input id="instituicao" name="instituicao" type="text" autocomplete="organization" required></div>
+            <div class="field"><label for="instituicao">Instituição / empresa (opcional)</label><input id="instituicao" name="instituicao" type="text" autocomplete="organization"></div>
             <div class="field"><label for="email">E-mail *</label><input id="email" name="email" type="email" autocomplete="email" required></div>
             <div class="field"><label for="telefone">Telefone / WhatsApp *</label><input id="telefone" name="telefone" type="tel" autocomplete="tel" required></div>
             <div class="field"><label for="segmento">Segmento *</label><select id="segmento" name="segmento" required><option value="" selected disabled>Selecione</option><option>Escola</option><option>Clínica</option><option>Condomínio</option><option>Prefeitura / órgão público</option><option>Família / cliente final</option><option>Outro</option></select></div>
@@ -836,7 +841,7 @@
             <div class="field full"><label for="cidade">Cidade e estado</label><input id="cidade" name="cidade" type="text" autocomplete="address-level2" placeholder="Ex.: Goiânia, GO"></div>
             <div class="field full"><label for="mensagem">Conte um pouco sobre o projeto *</label><textarea id="mensagem" name="mensagem" required placeholder="Espaço disponível, faixa etária, prazo desejado e outras informações importantes."></textarea></div>
             <label class="consent"><input type="checkbox" name="consentimento" required><span>Autorizo o contato da Owl Toys para responder a esta solicitação.</span></label>
-            <button class="btn" type="submit">Enviar solicitação <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            <button class="btn" type="submit">Continuar no WhatsApp <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
           </div>
         </form>
       </div>
@@ -850,7 +855,7 @@
         <div><p class="footer-title">Navegação</p><ul class="footer-links"><li><a href="#sobre">Sobre</a></li><li><a href="#produtos">Produtos</a></li><li><a href="#segmentos">Segmentos</a></li><li><a href="#processo">Como funciona</a></li></ul></div>
         <div><p class="footer-title">Contato</p><ul class="footer-links"><li><a href="tel:+5562991919574">(62) 99191-9574</a></li><li><a href="mailto:contato@owltoys.com.br">contato@owltoys.com.br</a></li><li><a class="footer-instagram" href="https://www.instagram.com/owl.toys/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg>@owl.toys</a></li><li>Aparecida de Goiânia, GO</li><li>CNPJ: 27.855.598/0001-57</li></ul></div>
       </div>
-      <div class="footer-bottom"><span>© <span id="ano"></span> Owl Toys. Todos os direitos reservados.</span><span>Segurança para brincar. Desenvolvimento para crescer.</span></div>
+      <div class="footer-bottom"><span>© <span id="ano"></span> Owl Toys. Todos os direitos reservados.</span></div>
     </div>
   </footer>
 
@@ -899,6 +904,41 @@
       });
     }, { threshold: .12 });
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    /* ==========================================================
+       FORMULÁRIO — envia os dados preenchidos para o WhatsApp
+       Para trocar o número, altere somente a constante abaixo.
+       Formato: 55 + DDD + número, sem espaços ou símbolos.
+       ========================================================== */
+    const whatsappEmpresa = '5562991919574';
+    const orcamentoForm = document.getElementById('orcamento-form');
+
+    orcamentoForm.addEventListener('submit', event => {
+      event.preventDefault();
+
+      const dados = new FormData(orcamentoForm);
+      const valor = campo => String(dados.get(campo) || '').trim();
+      const linhas = [
+        '*SOLICITAÇÃO DE ORÇAMENTO — SITE OWL TOYS*',
+        '',
+        'Olá! Vim pelo site da Owl Toys e gostaria de solicitar um orçamento.',
+        '',
+        `*Nome:* ${valor('nome')}`
+      ];
+
+      if (valor('instituicao')) linhas.push(`*Instituição/empresa:* ${valor('instituicao')}`);
+      linhas.push(
+        `*E-mail:* ${valor('email')}`,
+        `*Telefone:* ${valor('telefone')}`,
+        `*Segmento:* ${valor('segmento')}`,
+        `*Interesse:* ${valor('interesse')}`
+      );
+      if (valor('cidade')) linhas.push(`*Cidade/UF:* ${valor('cidade')}`);
+      linhas.push('', '*Detalhes:*', valor('mensagem'));
+
+      const url = `https://wa.me/${whatsappEmpresa}?text=${encodeURIComponent(linhas.join('\n'))}`;
+      window.location.href = url;
+    });
 
     document.getElementById('ano').textContent = new Date().getFullYear();
   </script>
